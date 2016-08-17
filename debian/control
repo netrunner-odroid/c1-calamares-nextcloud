@@ -1,12 +1,12 @@
-Source: c1-calamares-core-core
+Source: c1-calamares-nextcloud
 Section: devel
 Priority: optional
 Maintainer: Rohan Garg <rohan@kde.org>
 Build-Depends: debhelper (>= 9), dh-systemd
 Standards-Version: 3.9.6
-Homepage: https://github.com/netrunner-odroid/c1-calamares-core
+Homepage: https://github.com/netrunner-odroid/c1-calamares-nextcloud
 
-Package: c1-calamares-core
+Package: c1-calamares-nextcloud
 Architecture: armhf
 Depends: calamares
 Description: distribution-independent installer framework

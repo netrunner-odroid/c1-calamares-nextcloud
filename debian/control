@@ -12,4 +12,4 @@ Depends: calamares
 Description: distribution-independent installer framework
  distribution-independent installer framework.
  .
- This package contains the c1-calamares-core settings and branding for Netrunner Debian Core.
+ This package contains the c1-calamares-core settings and branding for Netrunner Nextcloud.

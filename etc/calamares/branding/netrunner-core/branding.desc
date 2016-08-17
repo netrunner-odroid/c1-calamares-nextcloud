@@ -2,13 +2,13 @@
 componentName:  netrunner-core
 
 strings:
-    productName:         Netrunner Core
-    shortProductName:    Netrunner Core
+    productName:         Netrunner Owncloud
+    shortProductName:    Netrunner Owncloud
     version:             1.0.0
     shortVersion:        1.0
-    versionedName:       Netrunner Core
-    shortVersionedName:  Netrunner Core 1.0
-    bootloaderEntryName: Netrunner Core
+    versionedName:       Netrunner Owncloud
+    shortVersionedName:  Netrunner Owncloud 1.0
+    bootloaderEntryName: Netrunner Owncloud
 
 images:
     productLogo:         "netrunner-debian-logo.png"

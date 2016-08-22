@@ -22,10 +22,11 @@ import MySQLdb
 NEXTCLOUD_DB = 'nextcloud'
 OCC_PATH = '/var/www/nextcloud/occ'
 
+
 def create_nextcloud_db(username, password):
     con = MySQLdb.connect(host="localhost",
-                         user="root",
-                         passwd="")
+                          user="root",
+                          passwd="")
     with con:
         cur = con.cursor()
         cur.execute('create database %s', (NEXTCLOUD_DB))
@@ -34,12 +35,13 @@ def create_nextcloud_db(username, password):
         cur.execute("grant all on %s.* to '%s'@'localhost'",
                     (NEXTCLOUD_DB, username))
 
+
 def setup_nextcloud(username, password, hostname):
     cmds = [
            ['sudo', '-u', 'www-data', OCC_PATH, 'maintenance:install',
-           '--database-name', NEXTCLOUD_DB, '--database-user', username,
-           '--admin-user', username, '--admin-pass', password,
-           '--database', 'mysqldb', "--database-pass='%s'" % password],
+            '--database-name', NEXTCLOUD_DB, '--database-user', username,
+            '--admin-user', username, '--admin-pass', password,
+            '--database', 'mysqldb', "--database-pass='%s'" % password],
            ['sudo', '-u', 'www-data', OCC_PATH, 'config:system:set',
             'trusted_domains', '0', "--value=%s.local" % hostname],
            ['sudo', '-u', 'www-data', OCC_PATH, 'config:system:set',
@@ -49,9 +51,13 @@ def setup_nextcloud(username, password, hostname):
     for cmd in cmds:
         libcalamares.utils.target_env_call(cmd)
 
+
 def run():
     libcalamares.utils.target_env_call
-    password = str(libcalamares.utils.obscure(libcalamares.globalstorage.value('password')))
+    obscured_password = str(libcalamares.globalstorage.value('password'))
+    # Symetric function call to get the unobscured password
+    password = str(libcalamares.utils.obscure(obscured_password))
+
     username = str(libcalamares.globalstorage.value('username'))
     hostname = str(libcalamares.globalstorage.value('hostname'))
     create_nextcloud_db(username, password)

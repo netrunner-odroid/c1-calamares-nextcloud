@@ -38,18 +38,18 @@ def create_nextcloud_db(username, password):
 
 def setup_nextcloud(username, password, hostname):
     cmds = [
-           ['sudo', '-u', 'www-data', OCC_PATH, 'maintenance:install',
+           [OCC_PATH, 'maintenance:install',
             '--database-name', NEXTCLOUD_DB, '--database-user', username,
             '--admin-user', username, '--admin-pass', password,
             '--database', 'mysqldb', "--database-pass='%s'" % password],
-           ['sudo', '-u', 'www-data', OCC_PATH, 'config:system:set',
+           [OCC_PATH, 'config:system:set',
             'trusted_domains', '0', "--value=%s.local" % hostname],
-           ['sudo', '-u', 'www-data', OCC_PATH, 'config:system:set',
+           [OCC_PATH, 'config:system:set',
             'trusted_domains', '1', "--value=%s" % hostname]
            ]
 
     for cmd in cmds:
-        libcalamares.utils.target_env_call(cmd)
+        libcalamares.utils.target_env_call(['sudo', '-u', 'www-data'] + cmd)
 
 
 def run():

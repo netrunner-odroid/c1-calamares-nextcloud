@@ -17,8 +17,6 @@
 #   along with Calamares. If not, see <http://www.gnu.org/licenses/>.
 
 import libcalamares
-import os
-from time import gmtime, strftime, sleep
 import MySQLdb
 
 NEXTCLOUD_DB = 'nextcloud'
